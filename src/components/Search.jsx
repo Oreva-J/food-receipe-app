@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-const URL = "https://api.spoonacularr.com/recipes/complexSearch";
-
-const api_key = "417bb17385cf42e9b1712c7ac199df58";
+const URL = "https://api.spoonacular.com/recipes/complexSearch";
+const api_key = "31c445093a694c7b8eac5307df77c43a";
 
 
 

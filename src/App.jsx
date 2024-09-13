@@ -8,7 +8,7 @@ import FoodDetails from './components/FoodDetails'
 
 const App = () => {
   const [foodData, setFoodData] = useState([])
-  const [foodId, setFoodId] = useState("")
+  const [foodId, setFoodId] = useState("680975")
   return (
     <div className='p-20'> 
       <Search foodData={foodData} setFoodData={setFoodData} />

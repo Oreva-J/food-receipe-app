@@ -6,7 +6,7 @@ const api_key = "31c445093a694c7b8eac5307df77c43a";
 
 
 const Search = ({foodDaa, setFoodData}) => {
-    const [query, setQuery] = useState("")
+    const [query, setQuery] = useState("pizza")
 
     useEffect(()=>{
         async function fetch_Api(){

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { BiSearch } from 'react-icons/bi';
 
 const URL = "https://api.spoonacular.com/recipes/complexSearch";
-const api_key = "31c445093a694c7b8eac5307df77c43a";
+const api_key = "383c6c7c826d439aafe401e28b240171";
 
 
 
-const Search = ({foodDaa, setFoodData}) => {
+const Search = ({foodData, setFoodData}) => {
     const [query, setQuery] = useState("pizza")
 
     useEffect(()=>{
@@ -20,9 +21,12 @@ const Search = ({foodDaa, setFoodData}) => {
     
     
   return (
-    <div>
-      <input type="text"  placeholder='Search' onChange={(e) => setQuery(e.target.value)} value={query}
-      className=''/>
+    <div className='w-full border grid'>
+      <div className='flex flex-1  relative mx-auto '>
+        <BiSearch size={25} className="absolute top-[25%] left-4" />
+        <input className='pl-12 py-2 rounded-md ring ring-green-800 outline-none ' type="text"  placeholder='Search' onChange={(e) => setQuery(e.target.value)} value={query}
+        />
+      </div>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ItemList from './ItemList';
 
   
 const FoodDetails = ({foodId}) => {
@@ -6,7 +7,7 @@ const FoodDetails = ({foodId}) => {
   const [loading, setLoading] = useState(true)
 
   const URL = `https://api.spoonacular.com/recipes/${foodId}/information`;
-  const api_key = "31c445093a694c7b8eac5307df77c43a";
+  const api_key = "383c6c7c826d439aafe401e28b240171";
 
   useEffect(() =>{
     async function fetchFood(){
@@ -23,37 +24,36 @@ const FoodDetails = ({foodId}) => {
   return (
     <div>
       {/* food instruction card*/}
-      <div className='w-full'>
+      <div className='max-w-[600px] m-5 p-5 shadow-md rounded-xl'>
         
-       <h1>{foodId}</h1>
-       <h1 className='text-2xl mb-5 font-semibold'>{food.title}</h1>
-       <img className='w-[100%] mb-2 rounded-md' src={food.image} alt="" />
-       <div className='flex flex-wrap gap-2'> 
+      
+       <h1 className='text-3xl mb-5 font-semibold'>{food.title}</h1>
+       <img className='max-w-[100%] h-auto mb-2 rounded-md' src={food.image} alt="" />
+       <div className='flex justify-between mb-5 font-semibold'> 
              <span>⌚ {food.readyInMinutes} minutes</span>
              <span> 👨‍👩‍👧serves {food.servings}</span>
              <span> 🥕 {food.vegetarian? food.vegetarian : "non-vegetarian" }</span>
-             <span>${food.pricePerServing} Per Serving</span>
         </div>
-       </div>
+        <span className='font-semibold'>${food.pricePerServing} Per Serving</span>
+        <hr className='my-10' />
+
+
+         {/* Food instruction */}
+      <h2 className='text-3xl mb-10 text-stone-700 font-medium'>Instructions</h2>
+      <ol className='p-0 rounded-md text-stone-400 font-medium list-decimal text-lg '>
+          {loading? <p>Loading...</p> : food.analyzedInstructions[0].steps.map((step, index)=>( <li key={index}>{step.step}</li> )) }
+      </ol>
+
+      <hr className='my-10' />
+
        {/* food ingredients */}
        <div>
-        <h1>Ingredients</h1>
+        <h1 className='text-3xl mb-10 text-stone-700 font-medium'>Ingredients</h1>
         {/* ingrediets card */}
-
-        {
-        loading? "loading...": food.extendedIngredients.map((item) => <div>
-            <img src={`https://spoonacular.com/cdn/ingredients_100x100/` + item.image } alt="" />
-            {item.name}
-            <h3>{item.amount}{item.unit}</h3>
-            </div>)
-        }
-        
-        
-          
-        
+        <ItemList food={food} loading={loading} />
        
        </div>
-
+       </div>
      </div>
 
   )

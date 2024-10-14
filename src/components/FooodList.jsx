@@ -3,7 +3,7 @@ import FoodItem from './FoodItem'
 
 const FooodList = ({foodData, setFoodId}) => {
   return (
-    <div>
+    <div className=''>
         {foodData.map((food) => <FoodItem key={food.title} setFoodId={setFoodId} food={food} />)}
     </div>
   )
